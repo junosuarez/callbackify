@@ -10,11 +10,19 @@ var getUserById = callbackify(function (id) {
   return db.users.byId(id).one()
 })
 
-// later in your code
+// later in your code, we can use a callback
 
 getUserById(23, function (err, user) {
   if (err) { /* give up */ return }
   console.log('hello, ', user.name)
+})
+
+// but for newer code, we can consume it as a promise
+
+getUserById(23).then(function (user) {
+  console.log('hello, ', user.name)
+}, function (err) {
+  console.error(err)
 })
 
 ```
