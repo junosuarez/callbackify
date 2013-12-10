@@ -1,6 +1,6 @@
 var chai = require('chai')
 chai.should()
-var Q = require('q')
+var Promise = require('bluebird')
 
 describe('callbackify', function () {
   var callbackify = require('../')
@@ -8,7 +8,7 @@ describe('callbackify', function () {
   it('turns a promise-returning function into a CPS fn', function (done) {
 
     var foo = callbackify(function () {
-      return Q('hello!')
+      return Promise.resolve('hello!')
     })
 
     foo(function (err, res) {
@@ -23,7 +23,7 @@ describe('callbackify', function () {
 
   it('catches errors', function (done) {
     var foo = callbackify(function () {
-      return Q.reject(new Error('yar!'))
+      return Promise.reject(new Error('yar!'))
     })
 
     foo(function (err, res) {
@@ -40,7 +40,7 @@ describe('callbackify', function () {
   it('with parameters', function (done) {
 
     var foo = callbackify(function (x, y) {
-      return Q(x+y)
+      return Promise.resolve(x+y)
     })
 
     foo(23, 12, function (err, res) {
@@ -56,7 +56,7 @@ describe('callbackify', function () {
   it('returns the promise if no cb is specified', function (done) {
 
     var foo = callbackify(function () {
-      return Q(108)
+      return Promise.resolve(108)
     })
 
     foo().then(function (val) {
