@@ -1,5 +1,5 @@
 # callbackify
-backwords compatibilify your callback functions while migrating apis to promises
+backwards compatibilify your callback functions while migrating apis to promises
 
 ## usage
 ```js
