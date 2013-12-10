@@ -7,7 +7,7 @@ var callbackify = require('callbackify')
 
 var getUserById = callbackify(function (id) {
   // in this example, we're using [minq](https://npm.im/minq)
-  return db.users.byId(id).one()
+  return db.users.byId(id).first()
 })
 
 // later in your code, we can use a callback
