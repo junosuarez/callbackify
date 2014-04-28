@@ -1,11 +1,11 @@
 function callbackify(fn) {
-  const fnLength = fn.length
+  var fnLength = fn.length
   return function () {
-    const args = [].slice.call(arguments)
+    var args = [].slice.call(arguments)
     if (args.length === fnLength + 1 &&
         typeof args[fnLength] === 'function') {
       // callback mode
-      const cb = args.pop()
+      var cb = args.pop()
       fn.apply(this, args)
         .then(function (val) { cb(null, val) },
           function (err) { cb(err) })
