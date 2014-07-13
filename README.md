@@ -26,6 +26,12 @@ getUserById(23).then(function (user) {
 })
 
 ```
+`callbackify` will also preserve the `this` context of your functions:
+```js
+getUserById.call({foo:true}, 12)
+// the underlying promise-returning function is called with the supplied context argument
+```
+
 Note, `callbackify` only works on fixed-parameter length functions, not variadic functions. It determines whether or not you're passing in a continuation callback by counting parameters. If you can think of a more clever way, please send a PR!
 
 ## api
@@ -50,6 +56,7 @@ From package root:
 ## contributors
 
 - jden <jason@denizac.org>
+- tootallnate <nathan@tootallnate.net>
 
 
 ## license
