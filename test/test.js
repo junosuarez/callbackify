@@ -65,4 +65,19 @@ describe('callbackify', function () {
     .then(done, done)
   })
 
+  it('respects the `this` context', function (done) {
+    var ctx = {}
+
+    var foo = callbackify(function () {
+      return Promise.resolve(108)
+    })
+
+    foo.call(ctx, function (err, val) {
+      this.should.equal(ctx)
+      val.should.equal(108)
+      done()
+    })
+
+  })
+
 })
