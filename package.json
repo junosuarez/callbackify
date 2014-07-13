@@ -1,7 +1,7 @@
 {
   "name": "callbackify",
   "author": "jden <jason@denizac.org>",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "backwards compatibilify your callback functions while migrating apis to promises",
   "keywords": [
     "promises",
@@ -15,8 +15,8 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "chai": "~1.6.0",
-    "mocha": "~1.9.0",
-    "bluebird": "~0.11.5-0"
+    "chai": "^1.9.1",
+    "mocha": "^1.20.1",
+    "bluebird": "^2.2.1"
   }
 }
