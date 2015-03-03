@@ -32,7 +32,7 @@ getUserById.call({foo:true}, 12)
 // the underlying promise-returning function is called with the supplied context argument
 ```
 
-Normally, callbackify will only work with fixed-argument functions, and will use the declared
+Normally, callbackify will only work with fixed-parameter-length functions, and will use the declared
 parameter length to determine if the extra callback argument is present.  If you need to use
 callbackify with variadic functions, or functions that don't declare their full argument
 list, you can use:
