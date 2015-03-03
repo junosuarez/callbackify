@@ -80,4 +80,16 @@ describe('callbackify', function () {
 
   })
 
+  it('detects the callback with variadic functions', function (done) {
+    var foo = callbackify.variadic(function () {
+      return Promise.resolve(arguments[0])
+    })
+
+    foo(44, function (err, val) {
+      val.should.equal(44)
+      done()
+    })
+
+  })
+
 })

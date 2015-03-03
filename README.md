@@ -32,7 +32,28 @@ getUserById.call({foo:true}, 12)
 // the underlying promise-returning function is called with the supplied context argument
 ```
 
-Note, `callbackify` only works on fixed-parameter length functions, not variadic functions. It determines whether or not you're passing in a continuation callback by counting parameters. If you can think of a more clever way, please send a PR!
+Normally, callbackify will only work with fixed-argument functions, and will use the declared
+parameter length to determine if the extra callback argument is present.  If you need to use
+callbackify with variadic functions, or functions that don't declare their full argument
+list, you can use:
+```js
+// options argument is optional
+var getUserById = callbackify.variadic(function (id, options) {
+  if (options === undefined) { options = {} }
+  if (options.select) {
+    return db.users.byId(id).select(options.select).first()
+  } else {
+    return db.users.byId(id).first()
+  }
+})
+
+// we can do either of these
+getUserById(23, function (err, user) { })
+getUserById(23, { select: [ 'name' ] }, function (err, user) {} )
+```
+Note that this will not work if the last argument your function can take
+is a function, as that last argument will always be detected as a callback
+function.
 
 ## api
 
