@@ -1,7 +1,7 @@
 {
   "name": "callbackify",
   "author": "jden <jason@denizac.org>",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "backwards compatibilify your callback functions while migrating apis to promises",
   "keywords": [
     "promises",
